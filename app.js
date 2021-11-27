@@ -10,7 +10,7 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var incompleteTaskHolder=document.getElementById("incomplete-tasks");//ul of #incompleteTasks
+var todoTaskHolder=document.getElementById("todo-tasks");//ul of #todoTasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
@@ -65,8 +65,8 @@ var addTask=function(){
     if (!taskInput.value) return;
     var listItem=createNewTaskElement(taskInput.value);
 
-    //Append listItem to incompleteTaskHolder
-    incompleteTaskHolder.appendChild(listItem);
+    //Append listItem to todoTaskHolder
+    todoTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
 
     taskInput.value="";
@@ -122,18 +122,18 @@ var taskCompleted=function(){
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
     completedTasksHolder.appendChild(listItem);
-    bindTaskEvents(listItem, taskIncomplete);
+    bindTaskEvents(listItem, taskTodo);
 
 }
 
 
-var taskIncomplete=function(){
+var taskTodo=function(){
     console.log("Incomplete Task...");
 //Mark task as incomplete.
     //When the checkbox is unchecked
-    //Append the task list item to the #incompleteTasks.
+    //Append the task list item to the #todoTasks.
     var listItem=this.parentNode;
-    incompleteTaskHolder.appendChild(listItem);
+    todoTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }
 
@@ -168,12 +168,12 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
     checkBox.onchange=checkBoxEventHandler;
 }
 
-//cycle over incompleteTaskHolder ul list items
+//cycle over todoTaskHolder ul list items
 //for each list item
-for (var i=0; i<incompleteTaskHolder.children.length;i++){
+for (var i=0; i<todoTaskHolder.children.length;i++){
 
-    //bind events to list items chldren(tasksCompleted)
-    bindTaskEvents(incompleteTaskHolder.children[i],taskCompleted);
+    //bind events to list items children(tasksCompleted)
+    bindTaskEvents(todoTaskHolder.children[i],taskCompleted);
 }
 
 
@@ -181,8 +181,8 @@ for (var i=0; i<incompleteTaskHolder.children.length;i++){
 
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
-    //bind events to list items chldren(tasksIncompleted)
-    bindTaskEvents(completedTasksHolder.children[i],taskIncomplete);
+    //bind events to list items children(tasksTodo)
+    bindTaskEvents(completedTasksHolder.children[i],taskTodo);
 }
 
 
