@@ -15,7 +15,7 @@
     <p>
       <label class="new-task__label" for="new-task">Add Item</label>
       <div class="task__wrapper">
-        <input class="task__input-txt" id="new-task"class="common__input" type="text">
+        <input id="new-task" class="task__input-txt new-task__input common__input" type="text">
         <button>Add</button>
       </div>
     </p>
@@ -24,15 +24,15 @@
       <li>
         <input class="input-li__check" type="checkbox">
         <label class="common__input li-label">Pay Bills</label>
-        <input type="text" class="common__input task__input-txt li-input__text task">
+        <input type="text" class="common__input task__input-txt li-input__text not-edit-input__text">
         <button class="edit">Edit</button>
         <button class="delete">
           <img class="button-del__img" src="./remove.svg">
         </button></li>
       <li class="edit-mode">
-        <input class="input-li__check" type="checkbox" unchecked>
-        <label class="common__input li-label">Go Shopping</label>
-        <input type="text" value="Go Shopping" class="common__input task__input-txt li-input__text">
+        <input class="input-li__check" type="checkbox">
+        <label class="common__input li-label edit-mode__label">Go Shopping</label>
+        <input type="text" value="Go Shopping" class="common__input task__input-txt li-input__text edit-mode-text__input">
         <button class="edit">Save</button>
         <button class="delete">
           <img class="button-del__img" src="./remove.svg">
@@ -42,8 +42,8 @@
     <ul id="completed-tasks">
       <li>
         <input class="input-li__check" type="checkbox" checked>
-        <label class="common__input li-label">See the Doctor</label>
-        <input type="text" class="common__input task__input-txt li-input__text">
+        <label class="li-label common__input completed-task__label">See the Doctor</label>
+        <input type="text" class="common__input task__input-txt li-input__text not-edit-input__text">
         <button class="edit">Edit</button>
         <button class="delete">
           <img class="button-del__img" src="./remove.svg">

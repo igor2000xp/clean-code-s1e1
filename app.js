@@ -10,7 +10,7 @@
 
 var taskInput=document.getElementById("new-task");//Add a new task.
 var addButton=document.getElementsByTagName("button")[0];//first button
-var todoTaskHolder=document.getElementById("todo-tasks");//ul of #todoTasks
+var todoTaskHolder=document.getElementById("incomplete-tasks");//ul of #todoTasks
 var completedTasksHolder=document.getElementById("completed-tasks");//completed-tasks
 
 
@@ -33,18 +33,20 @@ var createNewTaskElement=function(taskString){
     var deleteButtonImg=document.createElement("img");//delete button image
 
     label.innerText=taskString;
-    label.className='task';
+    label.className='common__input li-label';
 
     //Each elements, needs appending
     checkBox.type="checkbox";
+    checkBox.className="input-li__check";
     editInput.type="text";
-    editInput.className="task";
+    editInput.className="common__input task__input-txt li-input__text not-edit-input__text";
 
     editButton.innerText="Edit"; //innerText encodes special characters, HTML does not.
     editButton.className="edit";
 
     deleteButton.className="delete";
     deleteButtonImg.src='./remove.svg';
+    deleteButtonImg.className='button-del__img';
     deleteButton.appendChild(deleteButtonImg);
 
 
@@ -93,9 +95,20 @@ var editTask=function(){
         //label becomes the inputs value.
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
+        // editInput.classList.add("not-edit-input__text");
+        label.classList.remove("edit-mode__label");
+        editInput.classList.remove("edit-mode-text__input");
+        editInput.classList.add("not-edit-input__text");
+
+
     }else{
+        //switch off .editmode
+        //inputs value becomes the label.
         editInput.value=label.innerText;
         editBtn.innerText="Save";
+        label.classList.add("edit-mode__label");
+        editInput.classList.add("edit-mode-text__input");
+        editInput.classList.remove("not-edit-input__text");
     }
 
     //toggle .editmode on the parent.
