@@ -16,7 +16,7 @@ var completedTasksHolder=document.getElementById("completed-tasks");//completed-
 
 //New task list item
 var createNewTaskElement=function(taskString){
-
+    // console.log('createNewTaskElement <=' + taskString);
     var listItem=document.createElement("li");
 
     //input (checkbox)
@@ -56,6 +56,7 @@ var createNewTaskElement=function(taskString){
     listItem.appendChild(editInput);
     listItem.appendChild(editButton);
     listItem.appendChild(deleteButton);
+    console.log('createNewTaskElement <=' + listItem);
     return listItem;
 }
 
@@ -95,7 +96,6 @@ var editTask=function(){
         //label becomes the inputs value.
         label.innerText=editInput.value;
         editBtn.innerText="Edit";
-        // editInput.classList.add("not-edit-input__text");
         label.classList.remove("edit-mode__label");
         editInput.classList.remove("edit-mode-text__input");
         editInput.classList.add("not-edit-input__text");
@@ -134,6 +134,14 @@ var taskCompleted=function(){
 
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
+    // !!!!
+    var label=listItem.querySelector("label");
+
+    // console.log(listItem.getElementsByTagName('label'));
+    label.classList.add('completed-task__label');
+    // console.log(label.classList);
+
+    // !!!
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskTodo);
 
@@ -146,6 +154,14 @@ var taskTodo=function(){
     //When the checkbox is unchecked
     //Append the task list item to the #todoTasks.
     var listItem=this.parentNode;
+        // !!!!
+        var label=listItem.querySelector("label");
+
+        // console.log(listItem.getElementsByTagName('label'));
+        label.classList.remove('completed-task__label');
+        // console.log(label.classList);
+    
+        // !!!
     todoTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }
@@ -184,7 +200,10 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
 //cycle over todoTaskHolder ul list items
 //for each list item
 for (var i=0; i<todoTaskHolder.children.length;i++){
+  // !!!
+    // console.log('todoTaskHolder = ' + i);
 
+    // !!!
     //bind events to list items children(tasksCompleted)
     bindTaskEvents(todoTaskHolder.children[i],taskCompleted);
 }
@@ -194,6 +213,11 @@ for (var i=0; i<todoTaskHolder.children.length;i++){
 
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
+  // !!!
+  // console.log('completedTasksHolder = ' + i);
+
+  // !!!!
+  
     //bind events to list items children(tasksTodo)
     bindTaskEvents(completedTasksHolder.children[i],taskTodo);
 }
