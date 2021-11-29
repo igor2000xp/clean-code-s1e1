@@ -16,7 +16,7 @@ var completedTasksHolder=document.getElementById("completed-tasks");//completed-
 
 //New task list item
 var createNewTaskElement=function(taskString){
-    // console.log('createNewTaskElement <=' + taskString);
+
     var listItem=document.createElement("li");
 
     //input (checkbox)
@@ -82,7 +82,6 @@ var editTask=function(){
     console.log("Edit Task...");
     console.log("Change 'edit' to 'save'");
 
-
     var listItem=this.parentNode;
 
     var editInput=listItem.querySelector('input[type=text]');
@@ -134,14 +133,10 @@ var taskCompleted=function(){
 
     //Append the task list item to the #completed-tasks
     var listItem=this.parentNode;
-    // !!!!
+
     var label=listItem.querySelector("label");
-
-    // console.log(listItem.getElementsByTagName('label'));
     label.classList.add('completed-task__label');
-    // console.log(label.classList);
 
-    // !!!
     completedTasksHolder.appendChild(listItem);
     bindTaskEvents(listItem, taskTodo);
 
@@ -150,18 +145,14 @@ var taskCompleted=function(){
 
 var taskTodo=function(){
     console.log("Incomplete Task...");
-//Mark task as incomplete.
+    //Mark task as incomplete.
     //When the checkbox is unchecked
     //Append the task list item to the #todoTasks.
     var listItem=this.parentNode;
-        // !!!!
-        var label=listItem.querySelector("label");
 
-        // console.log(listItem.getElementsByTagName('label'));
+        var label=listItem.querySelector("label");
         label.classList.remove('completed-task__label');
-        // console.log(label.classList);
-    
-        // !!!
+
     todoTaskHolder.appendChild(listItem);
     bindTaskEvents(listItem,taskCompleted);
 }
@@ -200,10 +191,7 @@ var bindTaskEvents=function(taskListItem,checkBoxEventHandler){
 //cycle over todoTaskHolder ul list items
 //for each list item
 for (var i=0; i<todoTaskHolder.children.length;i++){
-  // !!!
-    // console.log('todoTaskHolder = ' + i);
 
-    // !!!
     //bind events to list items children(tasksCompleted)
     bindTaskEvents(todoTaskHolder.children[i],taskCompleted);
 }
@@ -213,14 +201,54 @@ for (var i=0; i<todoTaskHolder.children.length;i++){
 
 //cycle over completedTasksHolder ul list items
 for (var i=0; i<completedTasksHolder.children.length;i++){
-  // !!!
-  // console.log('completedTasksHolder = ' + i);
-
-  // !!!!
   
     //bind events to list items children(tasksTodo)
     bindTaskEvents(completedTasksHolder.children[i],taskTodo);
 }
+
+console.log(`
+Ваша оценка - 45 баллов 
+Отзыв по пунктам ТЗ:
+Выполненные пункты:
+1) Правило '1.1 Отступы' из html-and-css выполняется во всем проекте: табуляция не используется, все отступы выполнены пробельным символом 
+
+2) Правило '1.2 Нижний регистр написания' из html-and-css выполняется во всем проекте: все HTML теги, атрибуты из значения, селекторы и их значения записаны в нижнем регистре 
+
+3) Правило '1.3 Кавычки в HTML/CSS документе' из html-and-css выполняется во всем проекте: в HTML и СSS файлах используются только двойные кавычки 
+
+4) Правило '2.1 Форматирование' из html-and-css выполняется во всем проекте: все блочные, табличные и списочные элементы перенесены на отдельную строку и выделены отступами в соответствии с лестничной иерархией вложенности. 
+
+5) Правило '2.2 Тип документа / Document Type' из html-and-css выполняется во всем проекте: doctype присутствует первым тегом в html документе и соответствует типу html5 
+
+6) Правило '2.3 Символы-мнемоники' из html-and-css выполняется во всем проекте: символы-мнемоники не используются в html файлах 
+
+7) Правило '2.4 Атрибут 'type'' из html-and-css выполняется во всем проекте: CSS-стили и JS-скрипты подключены без использования данного атрибута 
+
+8) Правило '3.1 Единый стиль именования селекторов (классов / id)' из html-and-css выполняется во всем проекте: все селекторы именованы в едином стиле, при этом или в соответствии с БЭМ, или все слова в нижнем регистре и разделены между собой дефисом 
+
+9) Правило '3.2 Значимые названия идентификаторов и классов' из html-and-css выполняется во всем проекте: все имена классов и идентификаторов имеют или осмысленные имена в соответствии с их функциональным значением (!но НЕ ВНЕШНИМ ВИДОМ!), или шаблонное имя (также соответствующее назначению элемента) 
+
+10) Правило '3.3 Лаконичность названий идентификаторов и классов' из html-and-css выполняется во всем проекте: все имена id и классов понятны, достаточно длинные для понимания их назначения и при этом лаконичны 
+
+11) Правило '3.4 Теговые селекторы' из html-and-css выполняется во всем проекте: теговые селекторы не используются (за исключением намеренного сброса дефолтных стилей) 
+
+12) Правило '3.5 Отступы в блоках' из html-and-css выполняется во всем проекте: содержимое всех блоков отделены отступами 
+
+13) Правило '3.6 Пробел после названий свойств' из html-and-css выполняется во всем проекте: значения CSS-свойств отделены пробелами после двоеточия 
+
+14) Правило '3.7 Точка с запятой после свойств' из html-and-css выполняется во всем проекте: после каждого CSS-правила стоит точка с запятой 
+
+15) Правило '3.8 Разделение селекторов и свойств' из html-and-css выполняется во всем проекте: каждый селектор в групповом перечислении CSS-блока отделен переносом строки 
+
+16) Правило '1.1 Семантика' из html-and-css-extended соблюдено: все html-теги используются в соответствии с их назначением. При этом использование div-элементов сведено к минимуму, где возможно они заменены на семантические html5 элементы 
+
+17) Правило '1.2 Альтернатива для мультимедиа' из html-and-css-extended соблюдено: каждый мультимедиа элемент (в данном задании img) имеет alt-атрибут с осмысленным содержанием, соответствующим контенту элементы. При этом чисто декоративные картинки имеют alt с пустым значением. 
+
+18) Правило '2.1 БЭМ' из html-and-css-extended соблюдено: все классы именованы согласно БЭМ нотации 
+
+Итого: 45 баллов
+
+`)
 
 
 
